@@ -16,9 +16,13 @@
 			<li class="nav-item navbar-dropdown dropdown-user dropdown">
 				<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
 					<div class="avatar avatar-online">
+						@if(auth()->user()->role == 1)
 						<?php $userphoto = DB::table('account_holders')->select('photo')->where('user_id',auth()->user()->id)->get()->first(); ?>
 						@if($userphoto->photo)
 						<img src="{{asset('uploads')}}/image/{{$userphoto->photo}}" alt class="w-px-40 h-auto rounded-circle" />
+						@else
+						<img src="{{asset('assets')}}/admin/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+						@endif
 						@else
 						<img src="{{asset('assets')}}/admin/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
 						@endif
@@ -31,8 +35,12 @@
 							<div class="d-flex">
 								<div class="flex-shrink-0 me-3">
 									<div class="avatar avatar-online">
+										@if(auth()->user()->role == 1)
 										@if($userphoto->photo)
 										<img src="{{asset('uploads')}}/image/{{$userphoto->photo}}" alt class="w-px-40 h-auto rounded-circle" />
+										@else
+										<img src="{{asset('assets')}}/admin/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+										@endif
 										@else
 										<img src="{{asset('assets')}}/admin/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
 										@endif
